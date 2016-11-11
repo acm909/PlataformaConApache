@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import persistencia.Cursos;
+import persistencia.Usuarios;
+
+/**
+ *
+ * @author Antonio1
+ */
+@Component (value="gestion")
+
+public class GestionRecursos implements IntefaceGestion {
+    @PersistenceContext (name="plataformaPU")
+    EntityManager em;
+
+    @Override
+    public String obtenerUsuario(String dni, String password) {
+        Usuarios us=em.find(Usuarios.class,dni);
+        if (us!=null){
+            if (us.getDni().equals(dni)&&us.getContraseña().equals(password)){
+                //Inicia la sesion
+                
+                if (us.getFuncion().equals("alumno")){
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", us);
+                    return "alumno";
+                }else{
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("administrador", us);
+                    return "administrador";
+                }
+                
+                
+            }else{
+                return "error";
+            }
+        }else{
+            return "error";
+        }      
+
+       }
+    //Introduce un objeto curso
+    @Transactional
+    @Override
+    public boolean introducirCurso(String idcurso, String nombre, String descripcion, String contenido) {
+        Cursos cu=new Cursos();
+        cu.setNombre(nombre);
+        cu.setIdcurso(idcurso);
+        cu.setContenido(contenido);
+        cu.setDescripcion(descripcion);
+        em.persist(cu);
+        return true;
+    }
+    
+    
+    
+    
+    
+}

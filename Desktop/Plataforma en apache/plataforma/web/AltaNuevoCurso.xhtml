@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Alta nuevo curso">
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Id del curso:" />
+                    <p:inputText value="#{registrarNuevoCuso.idCurso}" required="true" />
+                    <h:outputText value="Nombre:" />
+                    <p:inputText value="#{registrarNuevoCuso.nombre}" required="true" />
+                    <h:outputText value="Descripción:" />
+                    <p:inputText  value="#{registrarNuevoCuso.descripcion}" required="true" />
+                    <h:outputText value="Fecha fin curso:" />
+                    <p:inputText  value="#{registrarNuevoCuso.contenido}" required="true" />
+                    
+                   
+                </h:panelGrid>
+                <p:commandButton value="Enviar" action="#{registrarNuevoCuso.registrarCurso()}"/>
+            </p:panel>
+            
+        </h:form>
+    </h:body>
+</html>
