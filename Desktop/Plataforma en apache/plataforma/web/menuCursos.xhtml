@@ -13,12 +13,9 @@
                 <h:panelGrid columns="2" columnClasses="label, value">  
                 
                 <p:commandButton value="Nuevo Curso" action="AltaNuevoCurso.xhtml"/><br/><br/>                
-                <h:selectOneListbox>
-                    <f:selectItem itemLabel="Selecciona un curso" itemValue="Selecciona un curso"/>
-                    <!--<c:forEach begin="" end="">
-                        <f:selectItem itemLabel="" itemValue="" />
-                    </c:forEach>-->
-                </h:selectOneListbox><br/>
+                <h:selectOneMenu>
+                    <f:selectItems itemLabel="#{c.nombre}" value="#{crearEdicion.listaCursos}" var="c" itemValue="#{c.idcurso}"/>
+                </h:selectOneMenu><br/>
                 <p:commandButton value="Nueva Edición"/>
                 </h:panelGrid>                    
             </p:panel>            

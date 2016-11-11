@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.util.List;
 import persistencia.Cursos;
 
 /**
@@ -15,6 +16,8 @@ public interface IntefaceGestion {
     String obtenerUsuario (String dni, String password);
     
     boolean introducirCurso (String idcurso, String nombre, String descripcion, String contenido);
+    
+    List <Cursos> listarCursos();
     
 }
 

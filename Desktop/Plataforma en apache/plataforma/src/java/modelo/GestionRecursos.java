@@ -5,9 +5,12 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import persistencia.Cursos;
@@ -58,6 +61,17 @@ public class GestionRecursos implements IntefaceGestion {
         cu.setDescripcion(descripcion);
         em.persist(cu);
         return true;
+    }
+   
+    @Transactional
+    @Override
+    public List<Cursos> listarCursos(){
+        Query sql=em.createNamedQuery("Cursos.findAll");
+        ArrayList<Cursos> cur=(ArrayList<Cursos>)sql.getResultList();
+        
+        return cur;
+        
+        
     }
     
     
