@@ -12,17 +12,31 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class FileUploadMBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private Part file1;
     private Part file2;
     private String message;
+    
+    @ManagedProperty("#{registrarNuevoCuso}")
+    private RegistrarNuevoCuso bean1;
+
+    public RegistrarNuevoCuso getBean1() {
+        return bean1;
+    }
+
+    public void setBean1(RegistrarNuevoCuso bean1) {
+        this.bean1 = bean1;
+    }
+
     public Part getFile1() {
         return file1;
     }
@@ -51,6 +65,7 @@ public class FileUploadMBean implements Serializable {
         boolean file1Success = false;
         if (file1.getSize() > 0) {
             String fileName = Utils.getFileNameFromPart(file1);
+            bean1.contenido=("http://localhost:8080/plataforma/"+fileName) ;            
             /**
             * destination where the file will be uploaded
             */
@@ -74,7 +89,7 @@ public class FileUploadMBean implements Serializable {
         boolean file2Success = false;
         if (file2.getSize() > 0) {
             String fileName = Utils.getFileNameFromPart(file2);
-            
+
             File outputFile = new File(path + File.separator 
                     + File.separator + fileName);
             inputStream = file2.getInputStream();
