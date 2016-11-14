@@ -54,7 +54,7 @@ public class FileUploadMBean implements Serializable {
             /**
             * destination where the file will be uploaded
             */
-            File outputFile = new File(path + File.separator + "WEB-INF"
+            File outputFile = new File(path + File.separator 
                     + File.separator + fileName);
             inputStream = file1.getInputStream();
             outputStream = new FileOutputStream(outputFile);
@@ -74,7 +74,8 @@ public class FileUploadMBean implements Serializable {
         boolean file2Success = false;
         if (file2.getSize() > 0) {
             String fileName = Utils.getFileNameFromPart(file2);
-            File outputFile = new File(path + File.separator + "WEB-INF"
+            
+            File outputFile = new File(path + File.separator 
                     + File.separator + fileName);
             inputStream = file2.getInputStream();
             outputStream = new FileOutputStream(outputFile);
@@ -92,16 +93,18 @@ public class FileUploadMBean implements Serializable {
             file2Success = true;
         }
         if (file1Success || file2Success) {
-            System.out.println("File uploaded to : " + path);
+            System.out.println("Fichero subido a : " + path );
             /**
             * set the success message when the file upload is successful
             */
-            setMessage("File successfully uploaded to " + path);
+            setMessage("http://localhost:8080/plataforma/" + Utils.getFileNameFromPart(file1) +" -- "
+                    +"http://localhost:8080/plataforma/"+ Utils.getFileNameFromPart(file2));
+           
         } else {
             /**
             * set the error message when error occurs during the file upload
             */
-            setMessage("Error, select atleast one file!");
+            setMessage("Error, seleccione al menos un fichero!");
         }
         /**
         * return to the same view
