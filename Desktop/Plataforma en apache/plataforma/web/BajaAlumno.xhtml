@@ -3,11 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Baja de Alumno</title>
     </h:head>
     <h:body>
+        <ui:composition>
         <h:form>
             <p:panel header="Baja de alumnos">
                 <h:panelGrid columns="2" columnClasses="label, value">
@@ -41,6 +43,7 @@
                 </h:panelGrid>                    
             </p:panel>            
         </h:form>
+        </ui:composition>
     </h:body>
 </html>
 
