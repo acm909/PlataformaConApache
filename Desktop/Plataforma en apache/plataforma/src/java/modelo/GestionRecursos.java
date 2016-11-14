@@ -5,7 +5,10 @@
  */
 package modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -14,6 +17,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import persistencia.Cursos;
+import persistencia.Cursosedicion;
 import persistencia.Usuarios;
 
 /**
@@ -63,7 +67,7 @@ public class GestionRecursos implements IntefaceGestion {
         return true;
     }
    
-    @Transactional
+    
     @Override
     public List<Cursos> listarCursos(){
         Query sql=em.createNamedQuery("Cursos.findAll");
@@ -73,6 +77,42 @@ public class GestionRecursos implements IntefaceGestion {
         
         
     }
+    @Override
+    public List<Usuarios> listarProfesores(){
+        
+        Query q=em.createNamedQuery("Usuarios.findByFuncion").setParameter("funcion", "profesor");
+        ArrayList<Usuarios> profesores=(ArrayList<Usuarios>)q.getResultList();
+        return profesores;
+    }
+    
+    public Usuarios obtenerUsuDni(String dni){
+        Usuarios us=em.find(Usuarios.class, dni);
+        return us;
+    }
+    public Cursos obtenerPorId(String id){
+        Cursos cu=em.find(Cursos.class, id);
+        return cu;
+    }
+   
+  
+   
+    @Transactional
+    @Override
+    public boolean introEdicion(Date fIni, Date fFin, String idCurso, String idProfesor) {
+        Cursosedicion ce= new Cursosedicion();
+        Usuarios us=obtenerUsuDni(idProfesor);
+        Cursos cu=obtenerPorId(idCurso);
+        ce.setFechainicio(fIni);
+        ce.setFechafin(fFin);
+        ce.setIdprofesor(us);
+        ce.setIdcurso(cu);
+        ce.setIdcursoedicion(idCurso+"1");
+        ce.setNombre(idCurso +"ksdfj");
+        em.persist(ce); 
+        return true;
+    }
+    
+    
     
     
     

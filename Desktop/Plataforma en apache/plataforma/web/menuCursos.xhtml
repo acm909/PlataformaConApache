@@ -10,13 +10,27 @@
     <h:body>
         <h:form>
             <p:panel header="Alta Cursos">
-                <h:panelGrid columns="2" columnClasses="label, value">  
+                <h:panelGrid columns="2"  columnClasses="label, value" >  
                 
-                <p:commandButton value="Nuevo Curso" action="AltaNuevoCurso.xhtml"/><br/><br/>                
-                <h:selectOneMenu>
+                
+                <h:outputText value="Seleccione curso" />
+                <p:selectOneMenu value="#{crearEdicion.idCurso}">
                     <f:selectItems itemLabel="#{c.nombre}" value="#{crearEdicion.listaCursos}" var="c" itemValue="#{c.idcurso}"/>
-                </h:selectOneMenu><br/>
-                <p:commandButton value="Nueva Edición"/>
+                </p:selectOneMenu>
+                <h:outputText value="Seleccione profesor" />
+                <p:selectOneMenu value="#{crearEdicion.idProfesor}">
+                    <f:selectItems value="#{crearEdicion.listaProfesores}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.dni}" />
+                </p:selectOneMenu> 
+               
+                <p:outputLabel for="ini" value="Fecha de inicio" />
+                <p:calendar id="ini" value="#{crearEdicion.fIni}"  />
+                
+                <p:outputLabel for="fin" value="Fecha de fin" />
+                <p:calendar id="fin" value="#{crearEdicion.fFin}" />
+               
+              
+                
+                <h:commandButton value="Nueva Edición" action="#{crearEdicion.nuevaEdicion}" />
                 </h:panelGrid>                    
             </p:panel>            
         </h:form>
