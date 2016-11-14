@@ -127,16 +127,23 @@ public class GestionRecursos implements IntefaceGestion {
         List<Cursosedicion> cursos = (List<Cursosedicion>)sql.getResultList();
         List<Cursosedicion> cursosActivos = null;
         
-        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaActual = null;
-        try {
+        //SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+        //Date fechaActual = null;
+        /*try {
             fechaActual = sd.parse(sd.format(new Date()));
         } catch (ParseException ex) {
             ex.getMessage();
-        }
+        }*/
+        
+        Date fechaActual= new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaFormateada = formatter.format(fechaActual);
         for(Cursosedicion e: cursos){
             if (e.getFechafin().compareTo(fechaActual) > 0){
-                cursosActivos.add(e);
+                //System.out.println(e.getFechafin());
+                System.out.println(e);
+                
+                //cursosActivos.add(e);
             }
         // e.getFechainicio() =?
         }
