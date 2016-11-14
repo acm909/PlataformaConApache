@@ -9,6 +9,7 @@ package modelo;
 import java.util.Date;
 import java.util.List;
 import persistencia.Cursos;
+import persistencia.Cursosedicion;
 import persistencia.Usuarios;
 
 /**
@@ -21,6 +22,7 @@ public interface IntefaceGestion {
     List <Cursos> listarCursos();
     List <Usuarios> listarProfesores();
     boolean introEdicion(Date fIni, Date fFin, String idCurso, String idProfesor);
+    List <Cursosedicion> listarCursosActivos();
 }
 
 

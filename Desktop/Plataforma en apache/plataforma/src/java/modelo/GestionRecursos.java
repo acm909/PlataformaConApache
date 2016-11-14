@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,10 +121,27 @@ public class GestionRecursos implements IntefaceGestion {
         return true;
     }
     
-    
-    
-    
-    
-    
-    
+    @Override
+    public List<Cursosedicion> listarCursosActivos(){
+        Query sql=em.createNamedQuery("Cursosedicion.findAll");
+        List<Cursosedicion> cursos = (List<Cursosedicion>)sql.getResultList();
+        List<Cursosedicion> cursosActivos = null;
+        
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaActual = null;
+        try {
+            fechaActual = sd.parse(sd.format(new Date()));
+        } catch (ParseException ex) {
+            ex.getMessage();
+        }
+        for(Cursosedicion e: cursos){
+            if (e.getFechafin().compareTo(fechaActual) > 0){
+                cursosActivos.add(e);
+            }
+        // e.getFechainicio() =?
+        }
+
+        return cursosActivos;
+
+    }
 }

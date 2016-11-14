@@ -1,3 +1,4 @@
+
 <?xml version='1.0' encoding='UTF-8' ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -8,7 +9,7 @@
         <title>Consultar Cursos</title>
     </h:head>
     <h:body>
-        <h:dataTable border="1">
+        <h:dataTable border="1" value="#{cursosActivos.listaCursosActivos}" var="o">
         <f:facet name="header">
             <h:outputText value="Cursos" />
         </f:facet>
@@ -16,29 +17,10 @@
             <f:facet name="header">
                 <h:outputText value="Nombre" />
             </f:facet>
-            <h:outputText value="" /><!--actionListener="" que al pinchar muestra un listado de alumnos de ese curso debajo de esta tabla-->
+            #{o.fechafin}<!--actionListener="" que al pinchar muestra un listado de alumnos de ese curso debajo de esta tabla-->
         </h:column>
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Inicio" />
-            </f:facet>
-            <h:outputText value="" /><!--fechainicio-->
-        </h:column>
-        <h:column>   
-            <f:facet name="header">
-                <h:outputText value="Fin" />
-            </f:facet>
-            <h:outputText value="" /><!--fechafin-->
-        </h:column>
+
         </h:dataTable>
-        
-        <div>
-            
-            
-        </div>
-            
-        
-        
-        
+
     </h:body>
 </html>
