@@ -86,7 +86,7 @@ public class FileUploadMBean implements Serializable {
             }
             file1Success = true;
         }
-        boolean file2Success = false;
+        /*boolean file2Success = false;
         if (file2.getSize() > 0) {
             String fileName = Utils.getFileNameFromPart(file2);
 
@@ -106,14 +106,14 @@ public class FileUploadMBean implements Serializable {
                 inputStream.close();
             }
             file2Success = true;
-        }
-        if (file1Success || file2Success) {
+        }*/
+        if (file1Success /*|| file2Success*/) {
             System.out.println("Fichero subido a : " + path );
             /**
             * set the success message when the file upload is successful
             */
-            setMessage("http://localhost:8080/plataforma/" + Utils.getFileNameFromPart(file1) +" -- "
-                    +"http://localhost:8080/plataforma/"+ Utils.getFileNameFromPart(file2));
+            /*setMessage("http://localhost:8080/plataforma/" + Utils.getFileNameFromPart(file1) +" -- "
+                    +"http://localhost:8080/plataforma/"+ Utils.getFileNameFromPart(file2));*/
            
         } else {
             /**

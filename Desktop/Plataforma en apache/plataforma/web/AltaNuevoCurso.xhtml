@@ -20,17 +20,6 @@
                     <p:inputText  value="#{registrarNuevoCuso.descripcion}" required="true" />
                     <h:outputText value="URL:" />
                     <p:inputText  value="#{registrarNuevoCuso.contenido}" required="true" />
-                    <h:outputText value="Fecha inicio curso:" />
-                    <p:inputText type="date" value="fechainicio" required="true" label="cursofechainicio"/>
-                    <h:outputText value="Fecha fin curso:" />
-                    <p:inputText type="date" value="fechafin" required="true" label="cursofechafin"/>
-                    <h:outputText value="Profesor" />
-                    <p:selectOneRadio>
-                        <f:selectItem itemLabel="Antonio" itemValue="seleccionaprofesor"/>
-                    <!--<c:forEach begin="" end="">
-                        <f:selectItem itemLabel="" itemValue="" />
-                    </c:forEach>-->
-                    </p:selectOneRadio>
                    
                 </h:panelGrid>
                 <p:commandButton value="Enviar" action="#{registrarNuevoCuso.registrarCurso()}"/>
@@ -46,7 +35,6 @@
             <h:panelGrid>
                 <!-- input for files -->
                 <h:inputFile value="#{fileUploadMBean.file1}"></h:inputFile>
-                <h:inputFile value="#{fileUploadMBean.file2}"></h:inputFile>
                 <!-- action which is responsible for uploading file(s) -->
                 <h:commandButton action="#{fileUploadMBean.uploadFile()}" value="Subir Archivos"></h:commandButton>
             </h:panelGrid>
