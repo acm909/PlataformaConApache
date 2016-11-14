@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import managedBeans.FileUploadMBean;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import persistencia.Cursos;
@@ -60,7 +61,7 @@ public class GestionRecursos implements IntefaceGestion {
     public boolean introducirCurso(String idcurso, String nombre, String descripcion, String contenido) {
         Cursos cu=new Cursos();
         cu.setNombre(nombre);
-        cu.setIdcurso(idcurso);
+        cu.setIdcurso(idcurso);      
         cu.setContenido(contenido);
         cu.setDescripcion(descripcion);
         em.persist(cu);

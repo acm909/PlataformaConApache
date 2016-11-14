@@ -80,7 +80,7 @@ public class AsistenteCurso implements Serializable{
     
 
     
-    private UploadedFile file;
+    /*private UploadedFile file;
  
     public UploadedFile getFile() {
         return file;
@@ -95,7 +95,7 @@ public class AsistenteCurso implements Serializable{
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
-    }
+    }*/
     
   /*  public void guardar() {    
         Cursos cur=new Cursos();
