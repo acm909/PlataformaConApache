@@ -1,12 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Baja de Alumno</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <p:panel header="Baja de alumnos">
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:selectOneListbox>
+                    <f:selectItem itemLabel="Selecciona un curso" itemValue="Selecciona un curso"/>
+                    <!--<c:forEach begin="" end="">
+                        <f:selectItem itemLabel="" itemValue="" />
+                    </c:forEach> SON CURSOS ACTIVOS!!!!-->
+                </h:selectOneListbox>
+                <p:commandButton value="Mostrar alumnos"/><!--action="" onclick=""-->
+                <h:dataTable border="1">                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Curso" />
+                        </f:facet>
+                        <h:outputText value="" /><!--actionListener="" que al pinchar muestra un listado de alumnos de ese curso debajo de esta tabla-->
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Test" />
+                        </f:facet>
+                        <h:outputText value="" /><!--fechainicio-->
+                    </h:column>
+                    <h:column>   
+                        <f:facet name="header">
+                            <h:outputText value="Baja" />
+                        </f:facet>
+                        <p:commandButton value="Elininar"/>
+                    </h:column>
+                    </h:dataTable>
+                </h:panelGrid>                    
+            </p:panel>            
+        </h:form>
     </h:body>
 </html>
 
