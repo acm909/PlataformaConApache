@@ -28,6 +28,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cursosedicion")
 @NamedQueries({
+    @NamedQuery(name = "Cursosedicion.contarEdiciones", query= "SELECT  COUNT(c.idcursoedicion) FROM Cursosedicion c WHERE c.idcurso = :idcurso"),
     @NamedQuery(name = "Cursosedicion.findAll", query = "SELECT c FROM Cursosedicion c"),
     @NamedQuery(name = "Cursosedicion.findByIdcursoedicion", query = "SELECT c FROM Cursosedicion c WHERE c.idcursoedicion = :idcursoedicion"),
     @NamedQuery(name = "Cursosedicion.findByNombre", query = "SELECT c FROM Cursosedicion c WHERE c.nombre = :nombre"),

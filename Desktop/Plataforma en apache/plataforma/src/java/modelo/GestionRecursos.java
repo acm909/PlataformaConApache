@@ -107,8 +107,15 @@ public class GestionRecursos implements IntefaceGestion {
         ce.setFechafin(fFin);
         ce.setIdprofesor(us);
         ce.setIdcurso(cu);
-        ce.setIdcursoedicion(idCurso+"1");
-        ce.setNombre(idCurso +"ksdfj");
+        Query q=em.createNamedQuery("Cursosedicion.contarEdiciones").setParameter("idcurso", cu);
+        Object num= q.getSingleResult();
+        long numero=(long)num;
+        numero++;
+        
+        
+        
+        ce.setIdcursoedicion(idCurso+numero);
+        ce.setNombre(idCurso);
         em.persist(ce); 
         return true;
     }
