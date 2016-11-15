@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -120,6 +120,11 @@ public class GestionRecursos implements IntefaceGestion {
         ce.setNombre(idCurso);
         em.persist(ce); 
         return true;
+    }
+    @Override 
+    public List<Cursosedicion> PruebaGit2(){
+        List<Cursosedicion> probando = null;
+        return probando;
     }
     @Override 
     public List<Cursosedicion> PruebaGit(){
