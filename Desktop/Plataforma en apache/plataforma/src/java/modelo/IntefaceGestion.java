@@ -23,6 +23,9 @@ public interface IntefaceGestion {
     List <Usuarios> listarProfesores();
     boolean introEdicion(Date fIni, Date fFin, String idCurso, String idProfesor);
     List <Cursosedicion> listarCursosActivos();
+    boolean existeUsuario (String dni);
+    boolean matriUsuario(String dni, String idcursoedicion);
+    
 }
 
 

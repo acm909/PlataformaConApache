@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import persistencia.Cursos;
 import persistencia.Cursosedicion;
+import persistencia.Matricula;
 import persistencia.Usuarios;
 
 /**
@@ -123,32 +124,51 @@ public class GestionRecursos implements IntefaceGestion {
     
     @Override
     public List<Cursosedicion> listarCursosActivos(){
-        Query sql=em.createNamedQuery("Cursosedicion.findAll");
-        List<Cursosedicion> cursos = (List<Cursosedicion>)sql.getResultList();
-        List<Cursosedicion> cursosActivos = null;
         
-        //SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
-        //Date fechaActual = null;
-        /*try {
+        Query query = em.createNamedQuery("Cursosedicion.findAll");
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaActual = null;
+        try {
             fechaActual = sd.parse(sd.format(new Date()));
         } catch (ParseException ex) {
             ex.getMessage();
-        }*/
-        
-        Date fechaActual= new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaFormateada = formatter.format(fechaActual);
-        for(Cursosedicion e: cursos){
-            if (e.getFechafin().compareTo(fechaActual) > 0){
-                //System.out.println(e.getFechafin());
-                System.out.println(e);
-                
-                //cursosActivos.add(e);
-            }
-        // e.getFechainicio() =?
         }
+        List<Cursosedicion> aux = query.getResultList();
+        List<Cursosedicion> lista = new ArrayList<>();
+        for (Cursosedicion ce : aux) {
+            
+            if (ce.getFechafin().compareTo(fechaActual) > 0) {
+                lista.add(ce);
+            }
+        }
+        return lista;
 
-        return cursosActivos;
+    }
 
+    @Override
+    public boolean existeUsuario(String dni) {
+        Usuarios usu=null;
+        usu=em.find(Usuarios.class, dni);
+        if (usu!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean matriUsuario (String dni, String idcursoedicion){
+        Usuarios us=em.find(Usuarios.class, dni);
+        Cursosedicion ce=em.find(Cursosedicion.class, idcursoedicion);
+        Matricula m=new Matricula();
+        m.setIdalumno(us);
+        m.setIdedicion(ce);
+        
+        
+        
+        em.persist(m);
+        
+        
+        return true;
     }
 }
