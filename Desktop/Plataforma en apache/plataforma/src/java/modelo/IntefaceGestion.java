@@ -25,6 +25,7 @@ public interface IntefaceGestion {
     List <Cursosedicion> listarCursosActivos();
     boolean existeUsuario (String dni);
     boolean matriUsuario(String dni, String idcursoedicion);
+    List <Cursosedicion> PruebaGit();
     
 }
 

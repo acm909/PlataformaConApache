@@ -121,7 +121,11 @@ public class GestionRecursos implements IntefaceGestion {
         em.persist(ce); 
         return true;
     }
-    
+    @Override 
+    public List<Cursosedicion> PruebaGit(){
+        List<Cursosedicion> probando = null;
+        return probando;
+    }
     @Override
     public List<Cursosedicion> listarCursosActivos(){
         
