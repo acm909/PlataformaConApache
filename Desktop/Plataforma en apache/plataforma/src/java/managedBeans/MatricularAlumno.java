@@ -5,6 +5,7 @@
  */
 package managedBeans;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -18,7 +19,7 @@ import persistencia.Cursosedicion;
  */
 @ManagedBean
 @SessionScoped
-public class MatricularAlumno {
+public class MatricularAlumno implements Serializable{
 
     String dni;
     List<Cursosedicion> listarEdicionesActivas;

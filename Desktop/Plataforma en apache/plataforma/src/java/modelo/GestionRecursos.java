@@ -155,7 +155,7 @@ public class GestionRecursos implements IntefaceGestion {
             return false;
         }
     }
-    
+    @Transactional
     @Override
     public boolean matriUsuario (String dni, String idcursoedicion){
         Usuarios us=em.find(Usuarios.class, dni);
