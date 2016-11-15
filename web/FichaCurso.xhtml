@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Alta Nuevo Curso</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Ficha de cursos">
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Nombre:" />
+                    <h:outputText/>
+                    <h:outputText value="Descripción:" />
+                    <h:outputText/>
+                    <h:outputText value="Edición:" />
+                    <h:outputText/>                    
+                    <h:outputText value="Fecha inicio curso:" />
+                    <h:outputText/>
+                    <h:outputText value="Fecha fin curso:" />
+                    <h:outputText/>
+                    <h:outputText value="Profesor:" />
+                    <h:outputText/>
+                    <h:outputText value="Contenido:" />
+                    <f:event listener="#{basicDocumentViewerController.onPrerender}" type="preRenderView" />  
+                        <p:tabView>  
+                            <p:tab title="URL">  
+                                <pe:documentViewer height="500" url="/sections/documentviewer/book.pdf"/>  
+                            </p:tab>  
+                            <p:tab title="Resource">  
+                                <pe:documentViewer height="500" library="books" name="hood.pdf"/>  
+                            </p:tab>  
+                            <p:tab title="StreamedContent">  
+                                <pe:documentViewer height="500" value="#{basicDocumentViewerController.content}"/>  
+                            </p:tab>  
+                        </p:tabView>  
+                    <p:commandLink>
+                        <!--<h:graphicImage name="resources/img/descargapdf.jpg"/>-->
+                        <img src="resources/img/descargapdf.jpg"/><!--VER FOTO tamaño fondo... -->
+                    </p:commandLink>
+                    <p:commandButton value="Test"/><!--el action irá a un servlet? para decidir si hacemos el test, o ya está hecho(o mostrar nota)-->                                                            
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

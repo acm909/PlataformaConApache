@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Menu Cursos</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Alta Cursos">
+                <h:panelGrid columns="2" columnClasses="label, value">                               
+                <p:commandButton value="Nuevo Curso" action="AltaNuevoCurso"/><br/><br/>
+                <p:commandButton value="Nueva Edición" action="NuevaEdicion"/><!--action="" onclick=""-->
+                </h:panelGrid>                    
+            </p:panel>            
+        </h:form>
+    </h:body>
+</html>

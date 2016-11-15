@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <link href="resources/css/custom3.css" rel="stylesheet" />
+    </h:head>
+    <h:body>
+        <h:form style="
+                width: 500px;
+                height: 500px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -250px;   
+                margin-left: -200px
+                ">
+            <p:fieldset  legend="Introduzca credenciales" style="width: 30%;"  >
+                <h:panelGrid columns="2" cellpadding="5" >
+                     <h:outputLabel for="usuario" value="Usuario : " />
+                    <p:inputText id="usuario" required="true"  value="#{pruebaLogin.dni}" />
+                    <h:outputLabel for="password" value="Clave : " />
+                    <p:password id="password" value="#{pruebaLogin.password}" required="true"/>
+                    <p:commandButton value="Aceptar"  action="#{pruebaLogin.validarUsuario()}"/>
+
+
+                </h:panelGrid>
+            </p:fieldset>
+        </h:form>
+    </h:body>
+</html>
